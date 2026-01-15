@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Nunito_Sans } from "next/font/google";
 import "./globals.css";
+
+const nunitoSans = Nunito_Sans({variable:'--font-sans'});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     manifest: "/manifest.json",
-    title: "Next.js PWA powered by Serwist"
+    title: "Next.js PWA",
+    description: "Welcome to the Next.js Progressive Web App!",
 };
 
 export default function RootLayout({
@@ -23,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={nunitoSans.variable}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

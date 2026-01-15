@@ -1,114 +1,65 @@
-# Next.js PWA Template
+# Kitako - Privacy-First Expense Tracker
 
-A modern, production-ready Progressive Web App (PWA) template built with Next.js 16, React 19, TypeScript, and Serwist. This template provides everything you need to build a fast, installable web application with offline support.
+A modern, privacy-first expense tracking Progressive Web App (PWA) built with Next.js 16, React 19, TypeScript, and Serwist. All your financial data is stored entirely in your browser using IndexedDB - no servers, no cloud, complete privacy.
+
+## Prerequisites ⚠️
+
+The following are the frameworks and tools that you must be familiar with to be able to contribute to this project:
+
+1. [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) and [TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html)
+2. [Node.js](https://nodejs.org/en/download/) or [Bun](https://bun.sh/) (we personally prefer Bun)
+3. [React](https://react.dev/learn)
+4. [Next.js](https://nextjs.org/learn)
+5. [Tailwind CSS](https://tailwindcss.com/docs)
+
+## Running Locally 🏠
+
+1. Run the following in your terminal starting with cloning the repository:
+
+```bash
+git clone https://github.com/louislemsic/kitako.git
+```
+
+2. Install dependencies:
+
+```bash
+npm install    # or bun install
+```
+
+3. Run the development server:
+
+```bash
+npm run dev    # or bun dev
+```
+
 
 ## ✨ Features
 
-- 🚀 **Next.js 16** with Turbopack for lightning-fast development
-- ⚛️ **React 19** with the latest features
-- 📱 **Progressive Web App** support with Serwist
-- 🎨 **Tailwind CSS v4** for modern styling
-- 📝 **TypeScript** for type safety
-- 🎯 **React Compiler** enabled for optimized performance
-- 📦 **Service Worker** with runtime caching and precaching
-- 🔤 **Geist Fonts** (Sans & Mono) from Vercel
+### Core Functionality
+- 💰 **Expense Tracking** - Record expenses with categories, accounts, dates, and remarks
+- 💵 **Income Tracking** - Track income (gains) across your accounts
+- 🔄 **Transfer Management** - Transfer funds between accounts
+- 🏦 **Multiple Account Types** - Support for Savings, Credit Cards, and E-Wallets
+- 🏷️ **Category Management** - Create and customize expense categories with colors
+- 📊 **Dashboard** - View spending by category with interactive donut charts
+- 📅 **Transaction History** - Browse all transactions grouped by date
+- 📈 **Spending Analytics** - Track today's and monthly spending totals
 
-## 🚀 Getting Started
+### Privacy & Data Management
+- 🔒 **100% Local Storage** - All data stored in your browser's IndexedDB
+- 📤 **Data Export** - Export all your data as JSON
+- 📥 **Data Import** - Import previously exported data
+- 🗑️ **Data Deletion** - Complete data deletion with confirmation
+- 🌐 **No Server Required** - Works entirely offline after initial load
 
-### Prerequisites
+### User Experience
+- 📱 **Progressive Web App** - Install on desktop and mobile devices
+- 🌙 **Dark Mode Support** - Automatic theme based on system preference
+- 🎨 **Modern UI** - Beautiful interface with custom Kitako color scheme
+- 🚀 **Fast Performance** - Built with Next.js 16 and Turbopack
+- 📱 **Mobile-First** - Optimized for mobile devices
+- 🔐 **Route Protection** - Automatic onboarding flow for new users
 
-- Node.js 18+ 
-- npm, yarn, pnpm, or bun
+## Contribution 🤝
 
-### Installation
-
-1. **Clone or use this template**
-   ```bash
-   git clone https://github.com/startwiseph/next-pwa.git
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Run the development server**
-   ```bash
-   npm run dev
-   ```
-
-## 📁 Project Structure
-A quick rundown of the entire repository. Feel free to own this and edit according to your need.
-```
-next-pwa/
-├── public/
-│   ├── manifest.json          # PWA manifest configuration
-│   ├── screenshots/           # Screenshots
-│   └── svgs/                  # Static SVG assets
-│
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx         # Root layout with metadata
-│   │   ├── page.tsx           # Home page
-│   │   └── globals.css        # Global styles with Tailwind
-│   └── sw.ts                  # Service worker configuration
-│
-├── next.config.ts             # Next.js configuration with Serwist
-├── tsconfig.json              # TypeScript configuration
-├── vitest.config.ts           # Vitest test configuration
-└── postcss.config.mjs         # PostCSS configuration
-```
-
-## ⚙️ Configuration
-
-> [!IMPORTANT]
-> Serwist is disabled in development mode due to Turbopack compatibility. The service worker will only be active in production builds. This is configured automatically in `next.config.ts`.
-
-### PWA Configuration
-
-The PWA is configured using Serwist in `next.config.ts`. The service worker is automatically disabled in development mode to avoid Turbopack compatibility issues.
-
-**Key settings:**
-- Service worker source: `src/sw.ts`
-- Service worker destination: `public/sw.js`
-- Disabled in development (enabled in production only)
-
-### Service Worker
-
-The service worker (`src/sw.ts`) includes:
-- **Precaching** of static assets
-- **Runtime caching** with default strategies
-- **Navigation preload** for faster navigation
-- **Skip waiting** and **clients claim** for immediate updates
-
-### PWA Manifest
-
-Edit `public/manifest.json` to customize:
-- App name and description
-- Icons and theme colors
-- Display mode and orientation
-- Start URL
-
-## 📱 PWA Features
-
-### Installation
-
-Users can install your PWA on:
-- **Desktop**: Chrome, Edge, Safari (macOS)
-- **Mobile**: Chrome (Android), Safari (iOS)
-
-### Offline Support
-
-The service worker provides:
-- Offline page caching
-- API response caching
-- Image and asset caching
-- Background sync capabilities
-
-### Customization
-
-To customize caching strategies, edit `src/sw.ts` and modify the `runtimeCaching` configuration. See the [Serwist documentation](https://serwist.pages.dev/docs/build/configuring) for more options.
-
-## 🤝 Contributing
-
-This is a public template. Feel free to fork, modify, and use it for your projects!
+Kitako is an open source project made by James Louis Lemsic. Contributions are welcomed from the community! Feel free to fork this repository, make improvements, and submit pull requests. Your contributions help make this tool better for everyone.

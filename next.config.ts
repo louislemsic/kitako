@@ -2,13 +2,13 @@ import type { NextConfig } from "next";
 import withSerwistInit from "@serwist/next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   turbopack: {},
+  /* config options here */
 };
 
 /** DO NOT TOUCH */
 const withSerwist = withSerwistInit({
-  swSrc: "src/sw.ts",
+  swSrc: "src/lib/sw.ts",
   swDest: "public/sw.js",
   disable: process.env.NODE_ENV !== "production",
 });

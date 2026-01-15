@@ -1,8 +1,8 @@
 {
-  "name": "Next.js PWA",
-  "short_name": "NextPWA",
-    "description": "Welcome to the Next.js Progressive Web App template repository powered by Serwist! This part of the description is editable in the public/manifest.json file.",
-    "icons": [
+  "name": "Kitako | Privacy-First Expense Tracker",
+  "short_name": "Kitako",
+  "description": "Track your expenses privately, entirely in your browser.",
+  "icons": [
     {
       "src": "/icons/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -20,8 +20,8 @@
       "purpose": "any"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
+  "theme_color": "#9FCB98",
+  "background_color": "#F2F0EF",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
@@ -31,21 +31,21 @@
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "A very descriptive sentence about the screenshot."
+      "label": "Track your expenses privately, entirely in your browser."
     },
     {
       "src": "/screenshots/1.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Another descriptive sentence about the screenshot."
+      "label": "Add your expenses and income manually."
     },
     {
       "src": "/screenshots/1.webp",
       "sizes": "1080x1920",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Last descriptive sentence about the screenshot."
+      "label": "View analytics and insights about your spending."
     }
   ]
 }

@@ -1,3 +1,8 @@
+/**
+ * Do not delete this file. It is used by Serwist to generate the service worker.
+ * See https://serwist.pages.dev/docs/build/configuring for more information.
+ */
+
 import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
 import { Serwist } from "serwist";
 import { defaultCache } from "@serwist/next/worker";
