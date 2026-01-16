@@ -1,23 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Nunito_Sans } from "next/font/google";
+import { primaryFont } from "@/fonts";
 import "./globals.css";
 
-const nunitoSans = Nunito_Sans({variable:'--font-sans'});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-    manifest: "/manifest.json",
-    title: "Next.js PWA",
-    description: "Welcome to the Next.js Progressive Web App!",
+  manifest: "/manifest.json",
+  title: "Kitako | Privacy-First Expense Tracker",
+  description: "Track your expenses privately, entirely in your browser.",
+  openGraph: {
+    title: "Kitako | Privacy-First Expense Tracker",
+    description: "Track your expenses privately, entirely in your browser.",
+    images: [
+      {
+        url: "https://i.imgur.com/cPUQ5PW.png",
+        width: 1200,
+        height: 630,
+        alt: "Kitako",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    description: "Track your expenses privately, entirely in your browser.",
+    images: ["https://i.imgur.com/cPUQ5PW.png"],
+  },
 };
 
 export default function RootLayout({
@@ -26,12 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={nunitoSans.variable}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" >
+      <body className={`${primaryFont.variable} antialiased`}>{children}</body>
     </html>
   );
 }
