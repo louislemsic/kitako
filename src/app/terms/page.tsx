@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import { BackButton } from "@/components/back-button";
 import { ScrollToTopButton } from "@/components/scroll-to-top-button";
 
+// Configurable metadata that can be easily adjusted per project
 export const metadata = {
   title: "Terms of Service",
   description: "Guidelines and conditions for using our platform and services responsibly.",
@@ -15,12 +16,12 @@ export const metadata = {
     alt: "Kitako Logo",
     width: 1000,
     height: 1000,
-  }
+  },
+  filePath: path.join(process.cwd(), "public", "md", "terms.md"),
 };
 
 export default async function Terms() {
-  const filePath = path.join(process.cwd(), "public", "md", "terms.md");
-  const fileContent = fs.readFileSync(filePath, "utf8");
+  const fileContent = fs.readFileSync(metadata.filePath, "utf8");
 
   return (
     <main className={`min-h-screen ${metadata.bgColor} ${metadata.textColor}`}>
@@ -44,7 +45,7 @@ export default async function Terms() {
                 alt={metadata.logo.alt}
                 width={metadata.logo.width}
                 height={metadata.logo.height}
-                className="w-72 h-72 object-contain"
+                className="w-80 h-80 object-contain -ml-15"
               />
               <h1 className={`mt-1 text-4xl font-extrabold`}>{metadata.title}</h1>
               <p className={`mt-2 text-md leading-tight`}>{metadata.description}</p>

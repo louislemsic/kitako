@@ -16,13 +16,12 @@ export const metadata = {
     alt: "Kitako Logo",
     width: 1000,
     height: 1000,
-  }
+  },
+  filePath: path.join(process.cwd(), "public", "md", "privacy.md"),
 };
 
 export default async function PrivacyPolicy() {
-  // Configurable path to markdown file
-  const filePath = path.join(process.cwd(), "public", "md", "privacy.md");
-  const fileContent = fs.readFileSync(filePath, "utf8");
+  const fileContent = fs.readFileSync(metadata.filePath, "utf8");
 
   return (
     <main className={`min-h-screen ${metadata.bgColor} ${metadata.textColor}`}>
@@ -46,7 +45,7 @@ export default async function PrivacyPolicy() {
                 alt={metadata.logo.alt}
                 width={metadata.logo.width}
                 height={metadata.logo.height}
-                className="w-72 h-72 object-contain"
+                className="w-80 h-80 object-contain -ml-15"
               />
               <h1 className={`mt-1 text-4xl font-extrabold`}>{metadata.title}</h1>
               <p className={`mt-2 text-md leading-tight`}>{metadata.description}</p>
