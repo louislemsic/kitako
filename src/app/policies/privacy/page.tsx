@@ -7,8 +7,8 @@ import { ScrollToTopButton } from "@/components/scroll-to-top-button";
 
 // Configurable metadata that can be easily adjusted per project
 export const metadata = {
-  title: "Terms of Service",
-  description: "Guidelines and conditions for using our platform and services responsibly.",
+  title: "Privacy Policy",
+  description: "Our commitment to protecting your privacy and personal data.",
   bgColor: "bg-bc-1", // Include bg-[color-name]
   textColor: "text-bc-2", // Include text-[color-name]
   logo: {
@@ -17,10 +17,10 @@ export const metadata = {
     width: 1000,
     height: 1000,
   },
-  filePath: path.join(process.cwd(), "public", "md", "terms.md"),
+  filePath: path.join(process.cwd(), "public", "md", "privacy.md"),
 };
 
-export default async function Terms() {
+export default async function PrivacyPolicy() {
   const fileContent = fs.readFileSync(metadata.filePath, "utf8");
 
   return (
@@ -61,7 +61,7 @@ export default async function Terms() {
                 alt={metadata.logo.alt}
                 width={metadata.logo.width}
                 height={metadata.logo.height}
-                className="w-72 h-72 object-contain"
+                className="w-72 h-72 object-contain -ml-15"
               />
               <h1 className={`mt-1 text-4xl font-extrabold`}>{metadata.title}</h1>
               <p className={`mt-2 text-lg leading-tight`}>{metadata.description}</p>
