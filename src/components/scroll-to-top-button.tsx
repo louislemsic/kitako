@@ -1,55 +1,63 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { ArrowUp } from "lucide-react";
 
 export function ScrollToTopButton() {
   const [isPressed, setIsPressed] = useState(false);
-  const scrollCheckInterval = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    return () => {
-      // Cleanup interval on unmount
-      if (scrollCheckInterval.current) {
-        clearInterval(scrollCheckInterval.current);
-      }
-    };
-  }, []);
+  const scrollHandlerRef = useRef<(() => void) | null>(null);
+  const fallbackTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const scrollToTop = () => {
     // Set pressed state to trigger animation
     setIsPressed(true);
     
+    // Remove any existing scroll listener
+    if (scrollHandlerRef.current) {
+      window.removeEventListener("scroll", scrollHandlerRef.current);
+    }
+
+    // Clear any existing fallback timeout
+    if (fallbackTimeoutRef.current) {
+      clearTimeout(fallbackTimeoutRef.current);
+    }
+
+    // Create scroll handler
+    const handleScroll = () => {
+      // Check if we're at or very close to the top (within 5px to account for rounding)
+      if (window.scrollY <= 5) {
+        setIsPressed(false);
+        window.removeEventListener("scroll", handleScroll);
+        scrollHandlerRef.current = null;
+        
+        // Clear fallback timeout if we reached the top
+        if (fallbackTimeoutRef.current) {
+          clearTimeout(fallbackTimeoutRef.current);
+          fallbackTimeoutRef.current = null;
+        }
+      }
+    };
+
+    // Store handler reference for cleanup
+    scrollHandlerRef.current = handleScroll;
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     // Scroll to top
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
 
-    // Clear any existing interval
-    if (scrollCheckInterval.current) {
-      clearInterval(scrollCheckInterval.current);
-    }
-
-    // Check scroll position periodically until we reach the top
-    scrollCheckInterval.current = setInterval(() => {
-      // Check if we're at or very close to the top (within 5px to account for rounding)
-      if (window.scrollY <= 5) {
-        setIsPressed(false);
-        if (scrollCheckInterval.current) {
-          clearInterval(scrollCheckInterval.current);
-          scrollCheckInterval.current = null;
-        }
-      }
-    }, 16); // Check every ~16ms (roughly 60fps)
-
     // Fallback: reset after 2 seconds in case something goes wrong
-    setTimeout(() => {
+    fallbackTimeoutRef.current = setTimeout(() => {
       setIsPressed(false);
-      if (scrollCheckInterval.current) {
-        clearInterval(scrollCheckInterval.current);
-        scrollCheckInterval.current = null;
+      if (scrollHandlerRef.current) {
+        window.removeEventListener("scroll", scrollHandlerRef.current);
+        scrollHandlerRef.current = null;
       }
+      fallbackTimeoutRef.current = null;
     }, 2000);
   };
 
