@@ -2,8 +2,8 @@ import Image from "next/image";
 import path from "path";
 import fs from "fs";
 import ReactMarkdown from "react-markdown";
-import { BackButton } from "@/components/back-button";
-import { ScrollToTopButton } from "@/components/scroll-to-top-button";
+import { BackButton } from "@/components/BackButton";
+import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 
 // Configurable metadata that can be easily adjusted per project
 export const metadata = {

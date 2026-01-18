@@ -2,6 +2,8 @@
 
 import { useState, useRef } from "react";
 import { ArrowUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function ScrollToTopButton() {
   const [isPressed, setIsPressed] = useState(false);
@@ -62,14 +64,17 @@ export function ScrollToTopButton() {
   };
 
   return (
-    <button
+    <Button
       onClick={scrollToTop}
-      className={`flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-300 ${
-        isPressed ? "bg-white text-bc-1" : "bg-white/10 text-white"
-      }`}
+      variant="ghost"
+      size="icon"
+      className={cn(
+        "transition-all duration-300",
+        isPressed && "bg-primary text-primary-foreground"
+      )}
       aria-label="Scroll to top"
     >
-      <ArrowUp className="w-6 h-6 transition-colors duration-300" />
-    </button>
+      <ArrowUp className="size-5 transition-colors duration-300" />
+    </Button>
   );
 }

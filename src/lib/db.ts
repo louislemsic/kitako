@@ -49,7 +49,7 @@ export interface AppSettings {
 }
 
 class KitakoDB extends Dexie {
-  expenses!: Table<Expense>;
+  expenses!: Table<Expense>; 
   gains!: Table<Gain>;
   transfers!: Table<Transfer>;
   accounts!: Table<Account>;
