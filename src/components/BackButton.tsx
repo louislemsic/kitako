@@ -13,8 +13,9 @@ export function BackButton() {
       size="icon"
       onClick={() => router.back()}
       aria-label="Go back"
+      className="size-10 bg-muted/20 hover:bg-muted/90"
     >
-      <ArrowLeft className="size-5" />
+      <ArrowLeft className="size-7" />
     </Button>
   );
 }

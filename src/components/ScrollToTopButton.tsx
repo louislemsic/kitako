@@ -70,11 +70,13 @@ export function ScrollToTopButton() {
       size="icon"
       className={cn(
         "transition-all duration-300",
-        isPressed && "bg-primary text-primary-foreground"
+        isPressed
+          ? "size-10 bg-white text-primary"
+          : "size-10 bg-muted/20 hover:bg-muted/90"
       )}
       aria-label="Scroll to top"
     >
-      <ArrowUp className="size-5 transition-colors duration-300" />
+      <ArrowUp className="size-7 transition-colors duration-300" />
     </Button>
   );
 }
