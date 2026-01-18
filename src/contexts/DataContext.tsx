@@ -8,6 +8,7 @@ import {
   type Expense,
   type Gain,
   type Transfer,
+  initializeDefaultCategories,
 } from "@/lib/db";
 
 // Combined transaction type for unified display
@@ -99,6 +100,8 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   const refreshCategories = React.useCallback(async () => {
     try {
       setIsLoadingCategories(true);
+      // Initialize default categories if none exist
+      await initializeDefaultCategories();
       const allCategories = await db.categories.toArray();
       setCategories(allCategories);
     } catch (error) {

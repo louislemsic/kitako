@@ -39,6 +39,7 @@ export interface Category {
   id?: number;
   name: string;
   color: string;
+  icon?: string; // Icon name from Lucide (e.g., "Plus", "UtensilsCrossed")
 }
 
 export interface AppSettings {
@@ -105,6 +106,31 @@ export async function markAsInitialized(): Promise<void> {
     });
   } catch (error) {
     console.error("Error marking database as initialized:", error);
+    throw error;
+  }
+}
+
+/**
+ * Initialize default categories if they don't exist.
+ * Called when the app is first used.
+ */
+export async function initializeDefaultCategories(): Promise<void> {
+  try {
+    const existingCategories = await db.categories.toArray();
+    
+    // Only initialize if no categories exist
+    if (existingCategories.length === 0) {
+      const defaultCategories: Omit<Category, "id">[] = [
+        { name: "Income", color: "#22c55e" }, // green
+        { name: "Dining", color: "#ef4444" }, // red
+        { name: "Transit", color: "#3b82f6" }, // blue
+        { name: "Coffee", color: "#8b4513" }, // brown
+      ];
+
+      await db.categories.bulkAdd(defaultCategories);
+    }
+  } catch (error) {
+    console.error("Error initializing default categories:", error);
     throw error;
   }
 }
