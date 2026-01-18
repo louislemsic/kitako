@@ -11,7 +11,7 @@ export function ScrollToTopButton() {
   const scrollToTop = () => {
     // Set pressed state to trigger animation
     setIsPressed(true);
-    
+
     // Remove any existing scroll listener
     if (scrollHandlerRef.current) {
       window.removeEventListener("scroll", scrollHandlerRef.current);
@@ -29,7 +29,7 @@ export function ScrollToTopButton() {
         setIsPressed(false);
         window.removeEventListener("scroll", handleScroll);
         scrollHandlerRef.current = null;
-        
+
         // Clear fallback timeout if we reached the top
         if (fallbackTimeoutRef.current) {
           clearTimeout(fallbackTimeoutRef.current);
@@ -65,9 +65,7 @@ export function ScrollToTopButton() {
     <button
       onClick={scrollToTop}
       className={`flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-300 ${
-        isPressed
-          ? "bg-white text-bc-1"
-          : "bg-white/10 text-white"
+        isPressed ? "bg-white text-bc-1" : "bg-white/10 text-white"
       }`}
       aria-label="Scroll to top"
     >

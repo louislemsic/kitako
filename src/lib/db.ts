@@ -108,4 +108,3 @@ export async function markAsInitialized(): Promise<void> {
     throw error;
   }
 }
-
