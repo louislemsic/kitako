@@ -48,7 +48,7 @@ export interface AppSettings {
   updatedAt: Date;
 }
 
-class KitakoDatabase extends Dexie {
+class KitakoDB extends Dexie {
   expenses!: Table<Expense>;
   gains!: Table<Gain>;
   transfers!: Table<Transfer>;
@@ -76,7 +76,7 @@ class KitakoDatabase extends Dexie {
   }
 }
 
-export const db = new KitakoDatabase();
+export const db = new KitakoDB();
 
 /**
  * Check if database is initialized by checking if user settings exist.
