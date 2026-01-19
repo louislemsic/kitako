@@ -36,7 +36,7 @@ import { cn } from "@/lib/utils";
 import { db } from "@/lib/db";
 
 // Category icon mapping
-const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
   Income: Plus,
   Dining: UtensilsCrossed,
   Transit: Train,
@@ -56,7 +56,7 @@ const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>
 };
 
 // Helper to get icon component from icon name
-function getIconFromName(iconName?: string): React.ComponentType<{ className?: string }> {
+function getIconFromName(iconName?: string): React.ComponentType<{ className?: string; style?: React.CSSProperties }> {
   if (!iconName) return Plus;
   return CATEGORY_ICONS[iconName] || Plus;
 }
