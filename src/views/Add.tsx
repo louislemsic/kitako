@@ -409,7 +409,14 @@ export function Add() {
           </Label>
           <Select
             value={selectedAccount?.toString() || undefined}
-            onValueChange={(value) => setSelectedAccount(parseInt(value))}
+            onValueChange={(value) => {
+              if (!value) {
+                setSelectedAccount(null);
+                return;
+              }
+              const parsed = parseInt(value, 10);
+              setSelectedAccount(isNaN(parsed) ? null : parsed);
+            }}
           >
             <SelectTrigger id="account-select" className="w-full">
               <SelectValue placeholder="Select an account" />
